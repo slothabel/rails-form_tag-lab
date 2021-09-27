@@ -12,12 +12,13 @@ class StudentsController < ApplicationController
 # => <ActionController::Parameters {"controller"=>"students", "action"=>"new"} permitted: false>
 
   def new
-binding.pry
-    @student = Student.create(params[:student])
-
+    
   end
-
+  
   def create
+    @student = Student.create(first_name: params[:student][:first_name], last_name: params[:student][:last_name])
+    @student.save
+    redirect_to students_path
   end
   
 end
